@@ -1,0 +1,54 @@
+a {
+    margin-top: 1rem;
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    font-size: 1.5rem;
+    color: #e50914;
+    position: relative;
+    cursor: pointer;
+}
+
+a:hover,
+a:focus {
+    outline: none;
+}
+
+a::before {
+    position: absolute;
+    content: '[';
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+a::after {
+    position: absolute;
+    content: ']';
+}
+
+a:hover::before,
+a:hover::after, {
+    opacity: 1;
+}
+
+a:hover::before,
+a:focus::before {
+    transform: translateX(-25px);
+}
+
+a:hover::after,
+a:focus::after {
+    transform: translateX(15px);
+}
+
+a::before,
+a::after {
+    color: #e50914;
+    display: inline-block;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.2s;
+}
+

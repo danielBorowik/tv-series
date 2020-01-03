@@ -1,0 +1,35 @@
+<template>
+<div>
+  <h1>CO JEST KURWA</h1>
+  <input v-model="textInput" />
+  <h3>{{ search }}</h3>
+</div>
+</template>
+
+<script>
+
+export default {
+  name: 'main',
+  data() {
+    return {
+      textInput: '',
+      searchResults: '',
+    };
+  },
+  computed: {
+    search() {
+      return this.textInput;
+    },
+  },
+};
+
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+
+h1 {
+  color: green;
+}
+
+</style>
