@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'SearchInput',
+  name: 'searchinput',
   methods: {
     handler(e) {
       this.$emit('input', e.target.value);

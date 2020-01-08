@@ -51,7 +51,7 @@ import Modal from './Modal.vue';
 const API = 'https://api.tvmaze.com/search/shows?q=';
 
 export default {
-  name: 'Search',
+  name: 'search',
   data() {
     return {
       textInput: '',

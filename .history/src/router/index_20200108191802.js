@@ -9,12 +9,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Search',
+    name: 'search',
     component: Search,
   },
   {
     path: '/watchlater',
-    name: 'WatchLater',
+    name: 'watchlater',
     component: WatchLater,
   },
   {

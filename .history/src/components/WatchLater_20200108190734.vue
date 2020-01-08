@@ -12,13 +12,13 @@
       </h2>
 
       <transition-group name="list" class="watchLaterList">
-        <WatchLaterItem
+        <watchlateritem
           v-for="item in $store.state.watchLaterIds"
           :key="item"
           :show="item"
           @closeModal="isModalOpened = false"
           @openModal="openModal($event)"
-        ></WatchLaterItem>
+        ></watchlateritem>
       </transition-group>
 
       <transition name="modal">
@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import Modal from './Modal.vue';
-import WatchLaterItem from './WatchLaterItem.vue';
+import modal from './modal.vue';
+import watchlateritem from './watchLaterItem.vue';
 
 export default {
-  name: 'WatchLater',
+  name: 'watchlater',
   data() {
     return {
       isModalOpened: false,
@@ -46,8 +46,8 @@ export default {
     };
   },
   components: {
-    Modal,
-    WatchLaterItem,
+    modal,
+    watchlateritem,
   },
   methods: {
     openModal(show) {

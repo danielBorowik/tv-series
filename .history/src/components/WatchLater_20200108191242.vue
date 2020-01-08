@@ -38,7 +38,7 @@ import Modal from './Modal.vue';
 import WatchLaterItem from './WatchLaterItem.vue';
 
 export default {
-  name: 'WatchLater',
+  name: 'watchlater',
   data() {
     return {
       isModalOpened: false,

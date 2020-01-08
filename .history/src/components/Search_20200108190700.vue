@@ -6,7 +6,7 @@
         <h1>SEARCH FOR A SHOW</h1>
       </header>
 
-      <SearchInput v-model="textInput" @input="search"></SearchInput>
+      <searchinput v-model="textInput" @input="search"></searchinput>
 
       <h2 v-if="noMatchesDisplay">NO MATCHES FOUND :(</h2>
 
@@ -19,21 +19,21 @@
       </div>-->
 
       <div v-if="searchResults && !loading" class="searchResults">
-        <SearchItem
+        <searchItem
           v-for="item in searchResults.data"
           :key="item.show.id"
           :show="item.show"
           @click.native="openModal(item.show)"
           @closeModal="isModalOpened = false"
-        ></SearchItem>
+        ></searchItem>
       </div>
 
       <transition name="modal">
-        <Modal
+        <modal
         v-if="isModalOpened"
         :show="displayedShow"
         @closeModal="isModalOpened = false">
-        </Modal>
+        </modal>
       </transition>
 
     </div>
@@ -44,14 +44,14 @@
 
 import debounce from 'lodash.debounce';
 import axios from 'axios';
-import SearchInput from './SearchInput.vue';
-import SearchItem from './SearchItem.vue';
-import Modal from './Modal.vue';
+import searchinput from './searchinput.vue';
+import searchItem from './searchItem.vue';
+import modal from './modal.vue';
 
 const API = 'https://api.tvmaze.com/search/shows?q=';
 
 export default {
-  name: 'Search',
+  name: 'search',
   data() {
     return {
       textInput: '',
@@ -73,9 +73,9 @@ export default {
     },
   },
   components: {
-    SearchInput,
-    SearchItem,
-    Modal,
+    searchinput,
+    searchItem,
+    modal,
   },
   methods: {
     search: debounce(function () {

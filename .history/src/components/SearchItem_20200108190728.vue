@@ -28,7 +28,7 @@
 import noImage from '../assets/noimg.png';
 
 export default {
-  name: 'SearchItem',
+  name: 'searchItem',
   props: {
     show: {
       type: Object,

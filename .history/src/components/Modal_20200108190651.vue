@@ -23,7 +23,7 @@
 import noImage from '../assets/noimg.png';
 
 export default {
-  name: 'Modal',
+  name: 'modal',
   props: {
     show: {
       type: Object,

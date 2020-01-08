@@ -1,37 +1,24 @@
 <template>
-  <div class="itemWrapper">
+  <div class="itemWrapper" @click="openModal">
     <h2>{{ name }}</h2>
     <div class="photo">
       <img :src="photo" alt="tv series image"/>
     </div>
-
-    <transition name="fade">
-      <button
-      key="1"
-      v-if="!isInWatchLater"
-      @click.stop="addToWatchLater">
-      WATCH LATER
-      </button>
-
-      <button
-      key="2"
-      v-else
-      @click.stop="deleteFromWatchLater"
-      class="alreadyAdded">
-      ADDED
-      </button>
-    </transition>
+    <button @click.stop="deleteFromWatchLater" class="alreadyAdded">ADDED</button>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import noImage from '../assets/noimg.png';
 
+const API = 'https://api.tvmaze.com/shows/';
+
 export default {
-  name: 'SearchItem',
+  name: 'watchlateritem',
   props: {
     show: {
-      type: Object,
+      type: Number,
       required: true,
     },
   },
@@ -39,6 +26,9 @@ export default {
     return {
       photo: noImage,
       name: null,
+      link: '',
+      id: '',
+      summary: '',
     };
   },
   computed: {
@@ -48,36 +38,45 @@ export default {
     },
   },
   methods: {
-    addToWatchLater() {
-      this.$emit('closeModal');
-      this.$store.commit('addToWatchLater', {
-        id: this.show.id,
-      });
-    },
     deleteFromWatchLater() {
       this.$emit('closeModal');
       this.$store.commit('deleteFromWatchLater', {
-        id: this.show.id,
+        id: this.id,
       });
+    },
+    openModal() {
+      const show = {
+        image: {
+          medium: this.photo,
+        },
+        name: this.name,
+        url: this.link,
+        summary: this.summary,
+      };
+      this.$emit('openModal', show);
     },
   },
   mounted() {
-    if (this.show.image !== null) this.photo = this.show.image.medium;
-    this.name = this.show.name;
+    axios
+      .get(`${API}${this.show}`)
+      .then((response) => {
+        this.name = response.data.name;
+        if (response.data.image !== null) this.photo = response.data.image.medium;
+        this.link = response.data.url;
+        this.id = response.data.id;
+        this.summary = response.data.summary;
+      })
+      // eslint-disable-next-line no-unused-vars
+      .catch((error) => {
+        // no console log for production
+        // console.log(error);
+      });
   },
 };
+
 </script>
 
 <style lang="scss" scoped>
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
 
 .itemWrapper {
   box-sizing: border-box;
