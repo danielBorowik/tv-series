@@ -137,13 +137,12 @@ h2 {
   .summary {
     max-height: 290px;
     overflow-y: auto;
-
-    @media (max-height: 800px) {
-      max-height: 150px;
+      @media (max-width: 700px) {
+        max-height: 150px;
     }
 
-    @media (max-height: 650px) {
-      display: none;
+      @media (max-width: 600px) {
+        display: none;
     }
   }
 }

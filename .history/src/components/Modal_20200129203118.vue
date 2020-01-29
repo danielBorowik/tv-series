@@ -116,7 +116,6 @@ h2 {
     text-align: center;
     overflow: hidden;
     margin-right: 50px;
-    min-height: 100px;
 
     @media (max-width: 1200px) {
       height: auto;
@@ -137,13 +136,8 @@ h2 {
   .summary {
     max-height: 290px;
     overflow-y: auto;
-
-    @media (max-height: 800px) {
-      max-height: 150px;
-    }
-
-    @media (max-height: 650px) {
-      display: none;
+      @media (max-width: 850px) {
+        max-height: 150px;
     }
   }
 }
