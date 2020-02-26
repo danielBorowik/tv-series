@@ -2,7 +2,7 @@
 
 Website created using Vue.js, SCSS
 
-Live: https://tv-series-search-daniel-borowik.netlify.com/#/
+Live: https://tv-series-search-daniel-borowik.netlify.com/
 
 API: http://www.tvmaze.com/api
 
